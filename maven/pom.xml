@@ -1,0 +1,47 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.julielab</groupId>
+  <artifactId>xercesImpl</artifactId>
+  <version>2.11</version>
+  <packaging>jar</packaging>
+ 
+ <parent>
+    <groupId>de.julielab</groupId>
+    <artifactId>julielab-parent</artifactId>
+    <version>2.0.0</version>
+  </parent>
+
+  <name>JULIE Lab Xerces</name>
+  <description>A slightly adapted version of Xerces to allow the XMLStringBuffer responsible for XML attribute scanning to start larger and thus avoid extended appending times. The initial buffer size is controlled by settting the system property julielab.xerces.attributebuffersize (also available as constant XMLScanner#ATTRIBUTE_BUFFER_SIZE).</description>
+  <url>http://www.julielab.de</url>
+ 
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+ 
+<developers>
+        <developer>
+            <name>Apache Xerces</name>
+            <email>general@xerces.apache.org</email>
+            <organization>Apache</organization>
+            <organizationUrl>http://apache.org/</organizationUrl>
+        </developer>
+          <developer>
+            <name>Erik Faessler</name>
+            <email>erik.faessler@uni-jena.de</email>
+            <organization>JULIE Lab</organization>
+            <organizationUrl>http://www.julielab.de/</organizationUrl>
+        </developer>
+    </developers>
+
+  <scm>
+    <connection>scm:git:git@github.com:JULIELab/xerces.git</connection>
+    <developerConnection>scm:git:git@github.com:JULIELab/xerces.git</developerConnection>
+    <url>git@github.com:JULIELab/xerces.git</url>
+  </scm>
+ 
+</project>
