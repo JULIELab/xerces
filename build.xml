@@ -308,7 +308,13 @@ Authors:
                 org/w3c/dom/traversal/**
                 org/w3c/dom/views/**
                 org/w3c/dom/xpath/**"
-           />
+           >
+           <!-- Xerces has been written with Java 1.2 which allowed a few things
+           forbidden with newer Java versions. Thus, we need the tools in the bootstrap
+           classpath so they are used over more up-to-date class versions in the
+           installed Java distribution. -->
+           <compilerarg line="-Xbootclasspath/p:${tools.dir}/${jar.apis}"/>
+    </xjavac>
   </target>
 
   <!-- =================================================================== -->

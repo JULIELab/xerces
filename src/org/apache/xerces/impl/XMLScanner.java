@@ -188,17 +188,33 @@ public abstract class XMLScanner
     /** String. */
     private final XMLString fString = new XMLString();
 
+    public static final String ATTRIBUTE_BUFFER_SIZE = "julielab.xerces.attributebuffersize";
+
     /** String buffer. */
     private final XMLStringBuffer fStringBuffer = new XMLStringBuffer();
 
     /** String buffer. */
-    private final XMLStringBuffer fStringBuffer2 = new XMLStringBuffer();
+    private final XMLStringBuffer fStringBuffer2;
 
     /** String buffer. */
     private final XMLStringBuffer fStringBuffer3 = new XMLStringBuffer();
 
     // temporary location for Resource identification information.
     protected final XMLResourceIdentifierImpl fResourceIdentifier = new XMLResourceIdentifierImpl();
+
+    public XMLScanner() {
+        String attrBufferSizeProp = System.getProperty(ATTRIBUTE_BUFFER_SIZE);
+        if (attrBufferSizeProp != null) {
+            try {
+                int attrBufferSize = Integer.parseInt(attrBufferSizeProp);
+                fStringBuffer2 = new XMLStringBuffer(attrBufferSize);
+            } catch (java.lang.NumberFormatException e) {
+                throw new java.lang.IllegalArgumentException("XML attribute buffer size property " + ATTRIBUTE_BUFFER_SIZE + " must be an integer but was " + attrBufferSizeProp);
+            }
+        } else {
+            fStringBuffer2 = new XMLStringBuffer();
+        }
+    }
 
     //
     // XMLComponent methods
