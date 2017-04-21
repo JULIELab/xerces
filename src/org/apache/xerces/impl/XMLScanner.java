@@ -191,7 +191,7 @@ public abstract class XMLScanner
     public static final String ATTRIBUTE_BUFFER_SIZE = "julielab.xerces.attributebuffersize";
 
     /** String buffer. */
-    private final XMLStringBuffer fStringBuffer = new XMLStringBuffer();
+    private final XMLStringBuffer fStringBuffer;
 
     /** String buffer. */
     private final XMLStringBuffer fStringBuffer2;
@@ -207,11 +207,13 @@ public abstract class XMLScanner
         if (attrBufferSizeProp != null) {
             try {
                 int attrBufferSize = Integer.parseInt(attrBufferSizeProp);
+                fStringBuffer  = new XMLStringBuffer(attrBufferSize);
                 fStringBuffer2 = new XMLStringBuffer(attrBufferSize);
             } catch (java.lang.NumberFormatException e) {
                 throw new java.lang.IllegalArgumentException("XML attribute buffer size property " + ATTRIBUTE_BUFFER_SIZE + " must be an integer but was " + attrBufferSizeProp);
             }
         } else {
+            fStringBuffer  = new XMLStringBuffer();
             fStringBuffer2 = new XMLStringBuffer();
         }
     }

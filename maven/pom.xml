@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.julielab</groupId>
   <artifactId>xercesImpl</artifactId>
-  <version>2.11</version>
+  <version>2.11.0.1</version>
   <packaging>jar</packaging>
  
  <parent>
@@ -12,7 +12,7 @@
   </parent>
 
   <name>JULIE Lab Xerces</name>
-  <description>A slightly adapted version of Xerces to allow the XMLStringBuffer responsible for XML attribute scanning to start larger and thus avoid extended appending times. The initial buffer size is controlled by settting the system property julielab.xerces.attributebuffersize (also available as constant XMLScanner#ATTRIBUTE_BUFFER_SIZE).</description>
+  <description>A slightly adapted version of Xerces 2.11.0 to allow the XMLStringBuffer responsible for XML attribute scanning to start larger and thus avoid extended appending times. The initial buffer size is controlled by settting the system property julielab.xerces.attributebuffersize (also available as constant XMLScanner#ATTRIBUTE_BUFFER_SIZE).</description>
   <url>http://www.julielab.de</url>
  
   <licenses>
@@ -43,5 +43,13 @@
     <developerConnection>scm:git:git@github.com:JULIELab/xerces.git</developerConnection>
     <url>git@github.com:JULIELab/xerces.git</url>
   </scm>
+
+  <dependencies>
+    <dependency>
+      <groupId>xml-apis</groupId>
+      <artifactId>xml-apis</artifactId>
+      <version>1.4.01</version>
+    </dependency>
+  </dependencies>
  
 </project>
