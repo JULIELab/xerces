@@ -1,15 +1,5 @@
 # JULIE Lab xerces
 
-# NOTE
-
-The current version on Maven Central unfortunately misses the dependency to `xml-apis`. Please add this dependency to your project when using this version of `xercelImpl`:
-    
-    <dependency>
-        <groupId>xml-apis</groupId>
-        <artifactId>xml-apis</artifactId>
-        <version>1.4.01</version>
-    </dependency>
-
 ## Introduction
 
 Xerces is a wide-spread SAX XML parser implementation. It is also used by the Apache UIMA project for (de-)serialization of CAS data. Unfortunately, Xerces exhibits unfavorable behavior or even bugs in some rare cases. In respect to UIMA, one issue is that the UIMA CAS (document plus annotations) is serialized into an XML format called XMI. There, the actual document text is stored as an attribute value of an element called sofa. However, Xerces expects rather short attribute values (the default is set to 32 characters). Exceeding the default size causes the `XMLStringBuffer` to resize frequently. Even though the buffer size is doubled for each resize and should, in theory, quickly reach enough capacity to hold even large document text, in reality for each resizing the old buffer has to be copied into the new, larger buffer. This, firstly, takes quite some time and, secondly, even causes higher memory consumption than necessary because in the last steps of buffer growth the largest part of the document has to be held in memory twice.
